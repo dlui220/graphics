@@ -24,6 +24,9 @@
 	  - cannot be scaled up well
    - Vector
       - list of shapes in the image
+   - netpbm
+      - uncompressed
+	  - lossless
 
 
 2. Compression
