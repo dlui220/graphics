@@ -19,3 +19,13 @@
    - Lossless
       - retains all data
 	  - tiff, bmp, raw, png (compressed and lossless)
+
+2. Compression
+   - 12 bytes: BBBBBRRRYYYY
+   - 6 bytes: 5B3R4Y
+   - Run-length encoding
+   - 5 bytes: GYRYG
+   - 10 bytes: 1G1Y1R1Y1G
+   
+
+
