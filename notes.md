@@ -3,7 +3,8 @@
 **2/2/16**
 
 *Image File Formats*
-1. 
+
+1. Types
    - Compressed
       - smaller
 	  - png, jpg, gif
@@ -11,8 +12,10 @@
       - no degradation
 	  - raw pixel information
 	  - tiff, bmp, raw
-2.
    - Lossy
       - loses original information
+	  - not all compressed formats are lossy
+      - jpg
    - Lossless
       - retains all data
+	  - tiff, bmp, raw, png (compressed and lossless)
