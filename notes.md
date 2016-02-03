@@ -12,7 +12,6 @@
       - no degradation
 	  - raw pixel information
 	  - tiff, bmp, raw
-	  
    - Lossy
       - loses original information
 	  - not all compressed formats are lossy
@@ -20,7 +19,6 @@
    - Lossless
       - retains all data
 	  - tiff, bmp, raw, png (compressed and lossless)
-
    - Raster
       - defined by a grid of pixels
 	  - cannot be scaled up well
