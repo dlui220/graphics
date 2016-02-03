@@ -27,10 +27,10 @@
 
 
 2. Compression
-   - Run-length encoding
+   - **Run-length encoding**
       - 12 bytes: BBBBBRRRYYYY
 	  - 6 bytes: 5B3R4Y
-	  - Only efficient when a lot of identical pixels are adjacent
+	  - *Only efficient when a lot of identical pixels are adjacent*
 	  - 5 bytes: GYRYG
 	  - 10 bytes: 1G1Y1R1Y1G
    
