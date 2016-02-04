@@ -1,0 +1,10 @@
+* Graphics Notes
+** NetPBM
+*** Header
+**** P3
+**** <XRES> <YRES>
+**** <MAX COLOR VALUE>
+*** R_G_B   R G B   RGB ...
+*** All whitespace is equivalent
+
+    
