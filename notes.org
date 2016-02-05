@@ -7,4 +7,24 @@
 ***** <MAX COLOR VALUE>
 **** R_G_B   R G B   RGB
 **** All whitespace is equivalent
-    
+** 2/5/16
+*** Bresenham's Line Algorithm
+**** y = mx + b
+**** y = [delta(y) / delta(x)]x + b
+**** y*delta(x) = x*delta(y) + b*delta(x)
+***** multiply by delta(x)
+**** 0 = x*delta(y) - y*delta(x) + b*delta(x)
+***** A = delta(y)
+***** B = -delta(x)
+***** C = b*(delta(x))
+**** 0 = Ax + By + C
+**** f(x,y) = Ax + By + C
+*****       = 0 -> (x,y) is on the line
+*****       < 0 -> (x,y) is above the line
+*****       > 0 -> (x,y) is below the line
+
+
+**** Assume first octant
+**** f(x+1,y+1/2) = 0 midpoint is on the line, either point is ok
+***** < 0 mp is above, draw (x+1,y)
+***** > mp is below, draw (x+1, y+1)
