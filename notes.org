@@ -28,3 +28,5 @@
 **** f(x+1,y+1/2) = 0 midpoint is on the line, either point is ok
 ***** < 0 mp is above, draw (x+1,y)
 ***** > mp is below, draw (x+1, y+1)
+** 2/9/16
+*** 
