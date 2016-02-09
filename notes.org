@@ -18,15 +18,77 @@
 ***** B = -delta(x)
 ***** C = b*(delta(x))
 **** 0 = Ax + By + C
+
 **** f(x,y) = Ax + By + C
 *****       = 0 -> (x,y) is on the line
 *****       < 0 -> (x,y) is above the line
 *****       > 0 -> (x,y) is below the line
 
-
-**** Assume first octant
-**** f(x+1,y+1/2) = 0 midpoint is on the line, either point is ok
-***** < 0 mp is above, draw (x+1,y)
-***** > mp is below, draw (x+1, y+1)
+**** Assume first octant (more horizontal than vertical)
+***** Midpoint: (x+1, y+1/2)
+***** f(x+1,y+1/2)
+****** = 0 midpoint is on the line, either point is ok
+****** < 0 mp is above, draw (x+1,y)
+****** > 0 mp is below, draw (x+1, y+1)
 ** 2/9/16
-*** 
+*** Bresenham's Line Algorithm (continued)
+**** First Draft Algorithm
+#+NAME: <1st Draft Algorithm>
+#+BEGIN_SRC 
+(x0,y0) -> (x1,y1)
+x = x0   ,  y = y0
+
+while (x <= x1):
+   plot(x,y)
+   d = F(x+1,y+1/2)
+   if(d < 0):
+      y = y + 1
+   x = x + 1
+#+END_SRC
+***** Initial value of d
+****** d = f(x0+1,y0+1/2)
+****** d = A(x0+1) + B(y0+1/2) + C
+****** d = Ax0 + A + By + (1/2)B + C
+****** d = Ax0 + By0 + C + A + (1/2)B
+*******   |   F(x0,y0)  |
+******                 0 + A + (1/2)B
+****** d = A + (1/2)B
+**** Second Draft Algorithm
+#+NAME: <2nd Draft Algorithm>
+#+BEGIN_SRC 
+(x0,y0) -> (x1,y1)
+x = x0   ,  y = y0
+d = A + (1/2)B
+
+while (x < x1):
+   plot(x,y)
+   if(d > 0):
+      y +=  1
+   x += 1
+   d = F(x+1,y+1/2)
+#+END_SRC
+**** If d > 0:
+***** x -> x+1 , y -> y+1
+***** d = f(x+1,y+1)
+***** d = d + A + B
+**** If d < 0:
+***** x -> x+1 , y -> y
+***** d = f(x+1,y)
+***** d = d + A
+**** Third Draft Algorithm
+***** Minimize functions, reduce amount of times we multiply
+***** Function for Octant 1
+#+NAME: <3rd Draft Algorithm>
+#+BEGIN_SRC 
+(x0,y0) -> (x1,y1)
+x = x0   ,  y = y0
+d = A + (1/2)B
+
+while (x < x1):
+   plot(x,y)
+   if(d > 0):
+      y +=  1
+      d += B
+   x += 1
+   d += A
+#+END_SRC
