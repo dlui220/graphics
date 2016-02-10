@@ -92,3 +92,59 @@ while (x < x1):
    x += 1
    d += A
 #+END_SRC
+** 2/10/16
+*** Octant I Algorithm
+**** Get rid of the 1/2
+#+NAME: <Algorithm>
+#+BEGIN_SRC 
+(x0,y0) -> (x1,y1)
+x = x0   ,  y = y0
+A = y1-y0, B = -(x1-x0), d = 2A+B
+
+while (x < x1):
+   plot(x,y)
+   if(d > 0):
+      y +=  1
+      d += B
+   x += 1
+   d += A
+#+END_SRC
+*** Octant II
+**** 1 < m < infinity
+***** Going up more often than to the right
+**** Possible pixels
+***** (x,y+1)
+***** (x+1,y+1)
+**** Midpoint: (x+1/2, y+1)
+**** Initial d
+***** f(x0+1/2,y0+1)
+***** Ax0 + By0 + C + 1/2A + B
+****** d = 1/2 A + B
+***** If f(x,y):
+****** < 0, (x,y) to the left
+****** > 0, (x,y) to the right
+***** Test:
+****** If d > 0, draw (x,y+1)
+****** If d < 0, draw (x+1,y+1)
+**** Algorithm
+
+#+NAME: <Algorithm>
+#+BEGIN_SRC 
+(x0,y0) -> (x1,y1)
+x = x0   ,  y = y0
+A = y1-y0, B = -(x1-x0), d = 1A+2B
+
+while (y <= y1):
+   plot(x,y)
+   if(d < 0):
+      x +=  1
+      d += 2A
+   y += 1
+   d += 2B
+#+END_SRC
+*** Octant VIII
+**** -1 < m < 0
+**** Possible
+***** (x+1,y-1)
+***** (x+1,y)
+**** Midpoint (x+1,y-1/2)
