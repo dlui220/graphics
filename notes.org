@@ -105,9 +105,9 @@ while (x < x1):
    plot(x,y)
    if(d > 0):
       y +=  1
-      d += B
+      d += 2B
    x += 1
-   d += A
+   d += 2A
 #+END_SRC
 *** Octant II
 **** 1 < m < infinity
@@ -148,3 +148,51 @@ while (y <= y1):
 ***** (x+1,y-1)
 ***** (x+1,y)
 **** Midpoint (x+1,y-1/2)
+** 2/23/16
+*** Matrix Math Review
+**** Scalar Multiplication
+***** Multiplying a matrix by a constant number
+***** Multiply each number in the matrix by the scalar
+**** Matrix Multiplication
+***** Not commutative
+****** M0 * M1 =/= M1 * M0
+****** # of columns in M0 = # of rows in M1
+**** Multiplicative Identity Matrix
+***** Always a square
+***** Diagonal of 1's
+***** 0's everywhere else
+**** Matrices in Graphics
+***** Scaling
+****** (x,y,z) --S(a,b,c)--> (ax,by,cz)
+****** Multiply by a scale matrix
+****** Identity matrix with (a,b,c) as diagonal
+** 2/24/16
+*** Transformation Matrices
+**** Scaling
+***** (x,y,z) --s(a,b,c)--> (ax,by,cz)
+a 0 0 0     x     ax
+0 b 0 0     y     by
+0 0 c 0  *  z  =  cz
+0 0 0 1     1     1
+**** Translating
+***** (x,y,z) --T(a,b,c)--> (a+x,b+y,c+z)
+***** We need the 1 at the end of the matrix for translations
+1 0 0 a     x     a+x
+0 1 0 b     y     b+y
+0 0 1 c  *  z  =  c+z
+0 0 0 1     1     1
+**** Rotating
+***** (x,y,z) --(R z-xaxis, theta)--> 
+***** (xcos(theta)-ysin(theta), ycos(theta)+xsin(theta), z)
+****** x = rcos theta
+****** y = rsin phi
+****** x_r = rcos( phi + theta )
+****** y_r = rsin( phi + theta )
+****** x_r = rcos(phi)cos(theta) - rsin(phi)sin(theta)
+****** x_r = xcos(theta) - ysin(theta)
+****** y_r = rcos(theta)sin(phi) + rsin(theta)cos(phi)
+****** y_r = ycos(theta) + xsin(theta)
+cos(theta)  -sin(theta)  0  0     x     xcos(theta) - ysin(theta)
+sin(theta)   cos(theta)  0  0  *  y  =  ycos(theta) + xsin(theta)
+0            0           1  0     z                 z
+0            0           0  1     1                 1
