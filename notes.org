@@ -182,7 +182,7 @@ a 0 0 0     x     ax
 0 0 1 c  *  z  =  c+z
 0 0 0 1     1     1
 **** Rotating
-***** (x,y,z) --(R z-xaxis, theta)--> 
+***** (x,y,z) --(R z-axis, theta)--> 
 ***** (xcos(theta)-ysin(theta), ycos(theta)+xsin(theta), z)
 ****** x = rcos theta
 ****** y = rsin phi
@@ -192,7 +192,29 @@ a 0 0 0     x     ax
 ****** x_r = xcos(theta) - ysin(theta)
 ****** y_r = rcos(theta)sin(phi) + rsin(theta)cos(phi)
 ****** y_r = ycos(theta) + xsin(theta)
+***** Matrix for Z rotation
 cos(theta)  -sin(theta)  0  0     x     xcos(theta) - ysin(theta)
 sin(theta)   cos(theta)  0  0  *  y  =  ycos(theta) + xsin(theta)
 0            0           1  0     z                 z
 0            0           0  1     1                 1
+***** (x,y,z) --(R x-axis, theta)--> 
+***** (x, ycos(theta)-zsin(theta), ysin(theta)+zcos(theta))
+***** Matrix for X rotation
+x     y             z       1
+1     0             0       0
+0  cos(theta)  -sin(theta)  0
+0  sin(theta)   cos(theta)  0
+0     0             0       1
+***** (x,y,z) --(R y-axis, theta)-->
+***** (xcos(theta)-zsin(theta), y, xsin(theta)+zcos(theta))
+***** Matrix for Y rotation
+cos(theta)  0  -sin(theta)  0
+     0      1       0       0 
+sin(theta)  0   cos(theta)  0 
+     0      0       0       1
+** 2/25/16
+*** Applying transformations
+**** E0: edge, T: translation, S: scale, R: rotation
+***** T * E0 = E1: translated
+***** S * E1 = E2: translated, then scaled
+***** R * E2 = E3: translated, then scaled, then rotated
