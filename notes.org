@@ -218,3 +218,68 @@ sin(theta)  0   cos(theta)  0
 ***** T * E0 = E1: translated
 ***** S * E1 = E2: translated, then scaled
 ***** R * E2 = E3: translated, then scaled, then rotated
+** 3/7/16
+*** Parametric Equations
+**** x = f(t)
+**** y = g(t)
+**** Line (x0,y0) -> (x1,y1)   t: 0 -> 1
+**** f(x) = x0 + t(delta(x))
+**** g(y) = sin(t)
+**** Example code
+#+BEGIN_SRC 
+double param_x ( double t ) {
+   return 0 + t * (XRES);
+}
+double param_y ( double t ) {
+   return 50 * sin(2 * M_PI * t) + 250; // 250 added to center image
+}
+
+//*** Main ***\\
+double x0, y0, x, y;
+x0 = 0;
+y0 = 250;
+
+double t = 0.1;
+for (;t<=1; t+=0.01){
+   x = param_x(t);
+   y = param_y(t);
+
+   add_edge(edges, x0, y0, 0 , x, y, 0);
+   x0 = x;
+   y0 = y;
+}
+color c;
+c.red = 0;
+c.green = 255;
+c.blue = 255;
+clear_screen();
+draw_lines(edges,s,c);
+display(s);
+
+#+END_SRC
+**** Circle
+***** x = rcos(theta) + cx
+***** y = rsin(theta) + cy
+***** Example code
+#+BEGIN_SRC 
+double param_x ( double t ) {
+   return 50 * cos( 2 * M_PI * t) + 250
+}
+double param_y ( double t ) {
+   return 50 * sin(2 * M_PI * t) + 250; // 250 added to center image
+}
+
+x0 = param_x(0);
+y0 = param_y(0);
+
+double t = 0.1;
+for (;t<=1.001; t+=0.01){
+   x = param_x(t);
+   y = param_y(t);
+
+   add_edge(edges, x0, y0, 0 , x, y, 0);
+   x0 = x;
+   y0 = y;
+}
+
+#+END_SRC
