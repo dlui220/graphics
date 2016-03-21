@@ -283,3 +283,100 @@ for (;t<=1.001; t+=0.01){
 }
 
 #+END_SRC
+** 3/8/16
+*** Hermite Curves
+**** Inputs;
+**** P0 P1 : endpoints
+**** R0 R1 : rate of change at each endpoint
+**** h1(t) = 2t^3 - 3t^2 + 1
+**** h2(t) = -2t^3 +3t^2
+**** h3(t) = t^3 - 2t^2 + t
+**** h4(t) = t^3 - t^2
+*** Cubic Curve
+**** f(t) = at^3 + bt^2 + ct + d : points on the curve
+**** f'(t) = 3at^2 + 2bt + c : rates of change (slopes)
+**** when
+***** t = 0:
+****** f(t) = d : P0
+****** f'(t) = c : R0
+***** d = 1:
+****** f(t) = a + b + c + d : P1
+****** f'(t) = 3a + 2b + c : R1
+0 0 0 1   a    d         P0
+1 1 1 1 * b    a+b+c+d   P1
+0 0 1 0   c  = c       = R0
+3 2 1 0   d    3a+2b+c   R1
+   M      C?              G
+
+M * C1 = G
+M^-1 * G = C
+** 3/9/16
+*** Continued from yesterday:
+
+M * C * G
+M^-1 * M * C = M^-1 * G
+I * C = M^-1 * G
+C = M^-1 * G
+
+ 2 -2  1  1    P0   a
+-3  3 -2 -1    P1   b
+ 0  0  1  0  * R0 = c
+ 1  0  0  0    R1   d
+
+*** While t <=1
+**** x = at^3 + bt^2 + ct + d
+**** y = et^3 + ft^2 + gt + h
+
+[t^3 t^2 t 1] * M^-1 = 2t^3 - 3t^2 + 1, -2t^3 + 3t^2, t^3 - 2t^2 + t, t^3 + t^2
+                            P0               P1             R0           R1
+*** Bezier
+**** Inputs: 
+***** P0, P3: endpoints
+***** P1, P2: other points not on the curve determine how the curve is pulled
+**** Linear Bezier Curve
+***** P(t) = (1-t)P0 + tP1
+***** P(t) = M(t)
+***** M0: P0 P1
+***** M1: P1 P2
+***** M(t) = (1-t)M0 + t(M1)
+** 3/10/16
+*** Bezier Curve (continued)
+**** Linear
+***** P(t) = (1-t)P0 + tP1
+**** Quadratic
+***** Q(t) = (1-t)Q0 + tQ1
+***** Q0(t) = (1-t)P0 + tP1
+***** Q1(t) = (1-t)P1 + tP2
+***** Q(t) = (1-t)[(1-t)P0+tP1] + t[(1-t)P1+tP2]
+***** Q(t) = (1-t)^2 P0 + (1-t)tP1 + (1-t)tP1 + t^2 P2
+***** *** Q(t) = (1-t)P0 + 2t(1-t)P1 + t^2P2 ***
+***** R(t) = (1-t)R0 + tR1
+***** R0 = (1-t)Q0 + tQ1
+***** R1 = (1-t)Q1+tQ2
+** 3/11/16
+*** More Bezier
+*** Inputs
+**** P0,P1,P2,P3 ---> at^3 + bt^2 + ct + d
+**** R(A) = (1-t)Q0 + tQ1
+****      = (1-t)[(1-t)^2P0 + 2t(1-t)P1 + tP2] + t[(-t)^2P1+2t(1-t)P2+t^2P3]
+****      = (1-t)^3P0 + 3t(1-t)^2P1 + 3t^2(1-t)P2 + t^3P3
+***** Too lazy to copy the rest
+**** Matrix to plug in:
+
+-1  3 -3  1   P0    -P0 + 3P1 - 3P2 + P3   a
+ 3 -6  3  0   P1    3P0 - 6P1 + 3P2 + 0    b
+-3  3  0  0 * P2 = -3P0 + 3P1 + 0   + 0  = c 
+ 0  0  0  0   P3     P0 +  0  + 0   + 0    d
+** 3/21/16
+*** 3D Shapes
+**** Box, Sphere, Torus, Bezier/Hermite Surfaces
+***** Box
+****** Inputs: width, height, depth
+******         (x,y,z)
+******         upper-left-front
+***** Sphere
+****** Matrix:
+1     0           0      0   rcos(theta)   x = rcos(theta)                          + cx
+0 cos(theta) -sin(theta) 0 * rsin(theta) = y = rsin(theta)cos(theta) - sin(theta)   + cy
+0 sin(theta)  cos(theta) 0       1         z = rsin(theta)sin(theta) + cos(theta) + cz
+0     0           0      1       0 
