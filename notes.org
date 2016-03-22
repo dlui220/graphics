@@ -32,9 +32,7 @@
 ****** > 0 mp is below, draw (x+1, y+1)
 ** 2/9/16
 *** Bresenham's Line Algorithm (continued)
-**** First Draft Algorithm
-#+NAME: <1st Draft Algorithm>
-#+BEGIN_SRC 
+**** First Draft Algorithm 
 (x0,y0) -> (x1,y1)
 x = x0   ,  y = y0
 
@@ -44,7 +42,6 @@ while (x <= x1):
    if(d < 0):
       y = y + 1
    x = x + 1
-#+END_SRC
 ***** Initial value of d
 ****** d = f(x0+1,y0+1/2)
 ****** d = A(x0+1) + B(y0+1/2) + C
@@ -54,8 +51,6 @@ while (x <= x1):
 ******                 0 + A + (1/2)B
 ****** d = A + (1/2)B
 **** Second Draft Algorithm
-#+NAME: <2nd Draft Algorithm>
-#+BEGIN_SRC 
 (x0,y0) -> (x1,y1)
 x = x0   ,  y = y0
 d = A + (1/2)B
@@ -66,7 +61,6 @@ while (x < x1):
       y +=  1
    x += 1
    d = F(x+1,y+1/2)
-#+END_SRC
 **** If d > 0:
 ***** x -> x+1 , y -> y+1
 ***** d = f(x+1,y+1)
@@ -78,8 +72,6 @@ while (x < x1):
 **** Third Draft Algorithm
 ***** Minimize functions, reduce amount of times we multiply
 ***** Function for Octant 1
-#+NAME: <3rd Draft Algorithm>
-#+BEGIN_SRC 
 (x0,y0) -> (x1,y1)
 x = x0   ,  y = y0
 d = A + (1/2)B
@@ -91,12 +83,9 @@ while (x < x1):
       d += B
    x += 1
    d += A
-#+END_SRC
 ** 2/10/16
 *** Octant I Algorithm
 **** Get rid of the 1/2
-#+NAME: <Algorithm>
-#+BEGIN_SRC 
 (x0,y0) -> (x1,y1)
 x = x0   ,  y = y0
 A = y1-y0, B = -(x1-x0), d = 2A+B
@@ -108,7 +97,6 @@ while (x < x1):
       d += 2B
    x += 1
    d += 2A
-#+END_SRC
 *** Octant II
 **** 1 < m < infinity
 ***** Going up more often than to the right
@@ -128,8 +116,6 @@ while (x < x1):
 ****** If d < 0, draw (x+1,y+1)
 **** Algorithm
 
-#+NAME: <Algorithm>
-#+BEGIN_SRC 
 (x0,y0) -> (x1,y1)
 x = x0   ,  y = y0
 A = y1-y0, B = -(x1-x0), d = 1A+2B
@@ -141,7 +127,6 @@ while (y <= y1):
       d += 2A
    y += 1
    d += 2B
-#+END_SRC
 *** Octant VIII
 **** -1 < m < 0
 **** Possible
@@ -226,7 +211,7 @@ sin(theta)  0   cos(theta)  0
 **** f(x) = x0 + t(delta(x))
 **** g(y) = sin(t)
 **** Example code
-#+BEGIN_SRC 
+#+BEGIN_SRC <C>
 double param_x ( double t ) {
    return 0 + t * (XRES);
 }
@@ -261,7 +246,7 @@ display(s);
 ***** x = rcos(theta) + cx
 ***** y = rsin(theta) + cy
 ***** Example code
-#+BEGIN_SRC 
+#+BEGIN_SRC <C>
 double param_x ( double t ) {
    return 50 * cos( 2 * M_PI * t) + 250
 }
@@ -376,7 +361,7 @@ C = M^-1 * G
 ******         upper-left-front
 ***** Sphere
 ****** Matrix:
-1     0           0      0   rcos(theta)   x = rcos(theta)                          + cx
-0 cos(theta) -sin(theta) 0 * rsin(theta) = y = rsin(theta)cos(theta) - sin(theta)   + cy
-0 sin(theta)  cos(theta) 0       1         z = rsin(theta)sin(theta) + cos(theta) + cz
-0     0           0      1       0 
+1     0        0     0   rcos(theta)   x = rcos(theta)                          + cx
+0 cos(phi) -sin(phi) 0 * rsin(theta) = y = rsin(theta)cos(theta) - sin(theta)   + cy
+0 sin(phi)  cos(phi) 0       1         z = rsin(theta)sin(theta) + cos(theta) + cz
+0     0        0     1       0 
