@@ -364,4 +364,34 @@ C = M^-1 * G
 1     0        0     0   rcos(theta)   x = rcos(theta)                          + cx
 0 cos(phi) -sin(phi) 0 * rsin(theta) = y = rsin(theta)cos(theta) - sin(theta)   + cy
 0 sin(phi)  cos(phi) 0       1         z = rsin(theta)sin(theta) + cos(theta) + cz
-0     0        0     1       0 
+0     0        0     1       0
+** 3/29/16
+*** Aim: Wireframe / Polygon Meshes
+**** Wireframe
+***** 3D objects are defined as the edges that connect the vertices
+***** Use existing code to add points to an edge matrix
+***** Fast
+**** Polygon
+***** 3D objects are defined by polygons (usually triangles or quadrilaterals that cover the surface of the object)
+***** 3/4 points are used to define a polygon
+***** Change from edge matrix -> polygon matrix
+***** Help create solid objects, & remove backfaces
+**** Polygon Matrix
+***** M = [P0 P1 P2 ...]
+***** For each triple, draw 3 lines
+***** P0 P1
+***** P1 P2
+***** P2 P0
+**** Edge Way
+***** Plot
+***** draw_line
+***** draw_lines
+***** add_point
+***** add_edge
+**** Polygon Way
+***** plot
+***** draw_line
+***** draw_polygons*
+***** add_point
+***** add_polygon*
+****** points must be added counter-clockwise
