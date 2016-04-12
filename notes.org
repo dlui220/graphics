@@ -395,3 +395,17 @@ C = M^-1 * G
 ***** add_point
 ***** add_polygon*
 ****** points must be added counter-clockwise
+** 4/12/16
+*** Relative Coordinate System
+**** Currently, all objects are drawn in the same grid w respect to the same origin (Global C.S.)
+**** In a relative CS, each object can have its own origin
+**** Once you're done describing the C.S. for an object, you draw it, then reset your polygon matrix and transformation matrix
+**** We will maintain a stack of transofmration matrices (origin/coordinate system)
+*** Drawing Pipeline
+**** A. Transformations are applied to the current top of the stack
+**** B. Origins can be pushed or popped as needed
+**** C. Drawing goes as follows
+***** 1. Generate and add points to a point matrix
+***** 2. Multiply points by the top of the stack
+***** 3. Draw the image to a screen
+***** 4. Clear the point matrix
