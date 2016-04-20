@@ -409,3 +409,10 @@ C = M^-1 * G
 ***** 2. Multiply points by the top of the stack
 ***** 3. Draw the image to a screen
 ***** 4. Clear the point matrix
+** 4/20/16
+*** Semantic Analyzer
+**** Knows what operators the tokens in the purse tree match
+**** Knows the order to navigate the parse tree
+**** Generates
+***** Symbol table - list of symbols with associated information (type, function_)
+***** List of operations in the order they should be performed
