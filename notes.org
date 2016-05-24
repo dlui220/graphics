@@ -416,3 +416,34 @@ C = M^-1 * G
 **** Generates
 ***** Symbol table - list of symbols with associated information (type, function_)
 ***** List of operations in the order they should be performed
+** 5/23/16
+*** Modeling Real Lighting
+**** 2 Distinct Parts
+***** Reflective Properties of the object
+***** The properties of the light source(s) color and intensity
+**** Two Kinds of Light Source
+***** Ambient Light hits all objects with the same color and intensity
+***** Point light sources come from a specific location and do not hit all surfaces equally.
+*** Lighting Equation
+**** We need to determine a color value for each polygon (or pixel)
+**** For grayscale images, we can calculate the color once per polygon and use that value for red, green, and blue
+**** For color images, we need to calculate color values separately
+***** I (Illumination) = Iambient + Idiffuse + Ispecular
+***** Different kinds of light and reflection
+**** Ambient Lighting
+***** Combination of the color of ambient light and how much of that light is reflected
+**** Diffuse Reflection
+***** Takes light from a single source and reflects it evenly in all directions
+**** Specular Reflection
+***** Reflects point sources at a specific vector
+** 5/24/16
+*** Reflective Properties of the Surface
+**** Represented as the % of light reflected back
+**** Ka (rgb), Kd (rgb), Ks (rgb)
+***** Ka + Kd + Ks = 1
+*** Quality of the Light
+**** Ambient
+***** Represented as a color value
+**** Point Source
+***** Represented as a color value and a point
+**** 
