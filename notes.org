@@ -447,3 +447,17 @@ C = M^-1 * G
 **** Point Source
 ***** Represented as a color value and a point
 **** 
+** 5/27/16
+*** Shading Models
+**** How we calculate I
+***** Flat shading
+****** Calculate I once per polygon
+***** Goroud Shading
+****** Calculate I for each pixel
+****** Generate I for each vertex (vertex normal)
+****** Interpolate I for each pixel
+****** Vertex Normal
+******* Combination of the surface normals of every polygon that shares that vertex
+***** Phong Shading
+****** Use vertex normals
+****** Interpolate the normal for each pixel and recalculate I for each pixel
